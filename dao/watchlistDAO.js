@@ -26,7 +26,7 @@ export default class WatchlistDAO {
         movieTitle: movieTitle,
         posterPath: posterPath
       }
-      console.log("Adding movie to watchlist");
+      console.log(`Adding movie ${movieId} to watchlist`);
       return await watchlist.insertOne(watchlistDoc);
     } catch (e) {
       console.error(`Unable to post movie into watchlist: ${e}`);
@@ -38,13 +38,13 @@ export default class WatchlistDAO {
   static async removeMoviefromWatchlist(movieId) {
     try {
       const deleteResponse = await watchlist.deleteOne({
-        _id: new ObjectId(movieId),
+        movieId: parseInt(movieId) // Match by movieId
       });
-
-      return deleteResponse
+      console.log(`Removing movie ${movieId} from watchlist`);
+      return deleteResponse;
     } catch (e) {
-      console.error(`Unable to delete review: ${e}`);
-      return { error: e }
+      console.error(`Unable to delete movie from watchlist: ${e}`);
+      return { error: e };
     }
   }
 

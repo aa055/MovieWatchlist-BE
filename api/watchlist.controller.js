@@ -9,7 +9,6 @@ export default class WatchlistController {
       const movieId = parseInt(req.body.movieId)
       const movieTitle = req.body.movieTitle;
       const posterPath = req.body.posterPath;
-      console.log('movieid', movieId);
       const watchlistResponse = await WatchlistDAO.addMovietoWatchlist(
         movieId,
         movieTitle,
