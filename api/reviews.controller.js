@@ -88,6 +88,7 @@ export default class ReviewsController {
         return
       }
       res.json(reviews);
+      console.log("Getting movie reviews")
     } catch (e) {
       console.log(`api, ${e}`);
       res.status(500).json({ error: e });

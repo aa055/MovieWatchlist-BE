@@ -3,15 +3,17 @@ import WatchlistDAO from "../dao/watchlistDAO.js";
 // Class defines the methods that will perform the actions(using the req, res, next) once an endpoint is called
 export default class WatchlistController {
 
-  // Method for a post request to add a movie using the request body params (movieId, user)
+  // Method for a post request to add a movie using the request body params (movieId, movieTitle)
   static async apiPostMovietoWatchlist(req, res, next) {
     try {
       const movieId = parseInt(req.body.movieId)
-      const user = req.body.user;
+      const movieTitle = req.body.movieTitle;
+      const posterPath = req.body.posterPath;
       console.log('movieid', movieId);
       const watchlistResponse = await WatchlistDAO.addMovietoWatchlist(
         movieId,
-        user
+        movieTitle,
+        posterPath,
       );
       res.json({ status: "success" });
     } catch (e) {

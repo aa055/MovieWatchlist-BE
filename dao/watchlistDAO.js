@@ -18,12 +18,13 @@ export default class WatchlistDAO {
     }
   }
 
-  // Add a review to the database collection using the (movieId, user)
-  static async addMovietoWatchlist(movieId, user) {
+  // Add a review to the database collection using the (movieId, movieTitle)
+  static async addMovietoWatchlist(movieId, movieTitle, posterPath) {
     try {
       const watchlistDoc = {
         movieId: movieId,
-        user: user
+        movieTitle: movieTitle,
+        posterPath: posterPath
       }
       console.log("Adding movie to watchlist");
       return await watchlist.insertOne(watchlistDoc);
